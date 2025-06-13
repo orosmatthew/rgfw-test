@@ -11,11 +11,8 @@ if (WIN32 AND MINGW)
     endif ()
 endif ()
 
-add_library(glad STATIC external/glad/src/glad.c)
-target_include_directories(glad PUBLIC external/glad/include)
-
-add_library(rgfw INTERFACE)
-target_include_directories(rgfw INTERFACE external/rgfw/include)
+add_subdirectory(external/glad)
+add_subdirectory(external/rgfw)
 
 add_executable(rgfw_test src/main.cpp)
 target_link_libraries(rgfw_test PRIVATE glad rgfw)
